@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/kry-ege-nutrition-api.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "publish",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "publish",
+                "${workspaceFolder}/kry-ege-nutrition-api.csproj",
+                "/property:GenerateFullPaths=true",
+                "/consoleloggerparameters:NoSummary"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "watch",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "watch",
+                "run",
+                "--project",
+                "${workspaceFolder}/kry-ege-nutrition-api.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        { 
+            "label": "generate-model",
+            "detail": "Veritabanından Model üret ...",
+            "command":"dotnet ef dbcontext scaffold 'Data Source=localhost;Initial Catalog=Northwind;Trusted_Connection=True;' Microsoft.EntityFrameworkCore.SqlServer -o Models -c 'NorthwindContext' --context-dir './' --force -d --verbose ",
+            "type": "shell",
+            "options": {
+
+                "cwd": "${workspaceFolder}"
+            }
+        }
+    ]
+}
